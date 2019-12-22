@@ -1,0 +1,21 @@
+.ant-progress-inner {
+    border-radius: 8px !important;
+    .ant-progress-bg {
+        border-radius: 8px !important;
+        height: 30px !important;
+    }
+}
+
+.ant-progress-outer {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}
+
+.ant-progress-text {
+    position: absolute !important;
+    left: 45% !important;
+    bottom: 30% !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}

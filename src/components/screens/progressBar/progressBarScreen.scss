@@ -1,0 +1,11 @@
+.page-content {
+    margin: 100px 0;
+    .progress-bar-wrapper {
+        padding: 50px;
+        .d-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+    }
+}
