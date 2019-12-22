@@ -1,10 +1,28 @@
-import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from '../index';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import MyApp from '../core/app';
 
-test('renders learn react link', () => {
-    const { getByText } = render(<App />);
-    const linkElement = getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+const mockStore = configureStore([]);
+
+describe('My Connected React-Redux Component', () => {
+    let store;
+    let component;
+    beforeEach(() => {
+        store = mockStore({
+            myState: 'sample text',
+        });
+        component = renderer.create(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <MyApp />
+                </BrowserRouter>
+            </Provider>
+        );
+    });
+    it('should render with given state from Redux store', () => {
+        expect(component);
+    });
 });
