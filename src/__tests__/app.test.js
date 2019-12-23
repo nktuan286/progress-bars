@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import MyApp from '../core/app';
+import { getData } from '../redux/actions/progressBar/progressBarAction';
 
 const mockStore = configureStore([]);
 
@@ -14,6 +15,7 @@ describe('My Connected React-Redux Component', () => {
         store = mockStore({
             myState: 'sample text',
         });
+        store.dispatch = jest.fn();
         component = renderer.create(
             <Provider store={store}>
                 <BrowserRouter>
@@ -23,6 +25,12 @@ describe('My Connected React-Redux Component', () => {
         );
     });
     it('should render with given state from Redux store', () => {
-        expect(component);
+        expect(component.toJSON()).toMatchSnapshot();
+        
+    });
+    it('should dispatch an action when init a component', () => {
+        expect(store.dispatch).toHaveBeenCalledWith(
+            getData({ payload: {} })
+        );
     });
 });

@@ -13,7 +13,7 @@ ReactDOM.render(
             <App />
         </BrowserRouter>
     </Provider>,
-	document.getElementById('root') || document.createElement('div')
+	document.getElementById('root')
 );
 
 process.env.REACT_APP_STAGE === 'PROD'
